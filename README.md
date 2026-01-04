@@ -1,4 +1,4 @@
-# 🦷 Sunkist Dental Clinic Website
+# Sunkist Dental Clinic Website
 
 ## Project Summary
 This project is a modern, responsive **Single-Page Application (SPA)** developed for a local dental practice.  
@@ -6,7 +6,7 @@ It showcases a robust front-end implementation with a focus on **user experience
 
 ---
 
-## 💻 Technology Stack
+## Technology Stack
 
 | Category | Technology | Purpose & Professional Application |
 |----------|------------|-----------------------------------|
@@ -18,7 +18,7 @@ It showcases a robust front-end implementation with a focus on **user experience
 
 ---
 
-## 🎨 Design & User Experience (UX) Thought Processes
+## Design & User Experience (UX) Thought Processes
 
 ### 1. Figma Integration and Design Fidelity
 - **Design-First Approach:** Prototyped UI in Figma to review visual identity and user flow with stakeholders.  
@@ -30,7 +30,7 @@ It showcases a robust front-end implementation with a focus on **user experience
 
 ---
 
-## 🧠 Architectural & Engineering Principles
+## Architectural & Engineering Principles
 
 ### 1. Component-Based Architecture
 - **Modularity:** UI broken into reusable components (`Employee.js`, `Testimonials.js`, `contactForm.js`) following **Single Responsibility Principle (SRP)**.  
@@ -45,7 +45,7 @@ It showcases a robust front-end implementation with a focus on **user experience
 
 ---
 
-## 🏆 Key Learning Outcomes
+## Key Learning Outcomes
 - **Front-End Proficiency:** Mastery of React ecosystem, state management, and custom component integration.  
 - **Advanced Styling:** Deep practical experience with Tailwind CSS and PostCSS integration.  
 - **Cross-Functional Development:** Translation of high-fidelity Figma wireframes into a live web application.  
@@ -54,7 +54,7 @@ It showcases a robust front-end implementation with a focus on **user experience
 
 ---
 
-## 🧑‍💻 Author
+## Author
 **Rushil Shah**  
-📫 [LinkedIn](https://linkedin.com/in/rushilshahh)
-💼 Portfolio
+[LinkedIn](https://linkedin.com/in/rushilshahh)
+Portfolio
