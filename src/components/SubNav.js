@@ -16,17 +16,17 @@ function subNav() {
         <button
           onClick={() =>
             window.open(
-              "https://newpatientinfo.net/PracticeWebSite/PracticeWebSheet.aspx?P=4426&S=9836&L=&F=&NFID=9837&NFID=9839&NFID=9840",
+              "https://patient.rocks/PatientForm/patient/ZGFlN2M3NDUtMWJmYi00MDU5LTk0MmMtZDNmMTBh",
               "_blank",
               "noopener,noreferrer"
             )
           }
           className="button-81 "
         >
-          New Patient Forms (PC/Laptop)
+          New Patient Forms
         </button>
 
-        <button
+        {/* <button
           onClick={() =>
             window.open(
               "https://newpatientinfo.net/PracticeWebSite/PracticeWebSheetMobile.aspx?P=4426&S=9836&L=&F=&NFID=9837&NFID=9839&NFID=9840",
@@ -40,7 +40,7 @@ function subNav() {
           New Patient Forms (Mobile/Tablet)
         </button>
 
-        <ExistingForms />
+        <ExistingForms /> */}
       </div>
 
       <section class="services">
