@@ -13,7 +13,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <AppSidebar />
         <SidebarInset>
           <AppHeader />
-          <main className="flex-1">{children}</main>
+          <div className="flex-1">{children}</div>
           <SiteFooter />
         </SidebarInset>
       </SidebarProvider>

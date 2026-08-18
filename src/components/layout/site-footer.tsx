@@ -1,7 +1,11 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Star } from "lucide-react";
 import Link from "next/link";
 
+import { FacebookIcon, LinkedinIcon } from "@/components/icons/social-icons";
 import { Container } from "@/components/layout/container";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { googleReviews } from "@/lib/reviews";
 import { navLinks, siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -74,10 +78,34 @@ export function SiteFooter() {
       </Container>
 
       <div className="border-t border-border py-6">
-        <Container>
+        <Container className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
+
+          <div className="flex items-center gap-4">
+            <Link
+              href={googleReviews.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            >
+              <Badge variant="secondary" className="gap-1">
+                <Star className="size-3 fill-current" />
+                {googleReviews.rating}
+              </Badge>
+              {googleReviews.count} Google reviews
+            </Link>
+
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="icon" disabled aria-label="Facebook">
+                <FacebookIcon className="size-4" />
+              </Button>
+              <Button variant="ghost" size="icon" disabled aria-label="LinkedIn">
+                <LinkedinIcon className="size-4" />
+              </Button>
+            </div>
+          </div>
         </Container>
       </div>
     </footer>
