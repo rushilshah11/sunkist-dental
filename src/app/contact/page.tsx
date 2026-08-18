@@ -61,9 +61,15 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground">
-        A map and additional details are coming in the next phase.
-      </p>
+      <div className="overflow-hidden rounded-lg border border-border">
+        <iframe
+          src={siteConfig.mapEmbedUrl}
+          title={`Map to ${siteConfig.name}`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="h-96 w-full"
+        />
+      </div>
     </Container>
   );
 }
