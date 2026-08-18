@@ -1,60 +1,36 @@
-# Sunkist Dental Clinic Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Project Summary
-This project is a modern, responsive **Single-Page Application (SPA)** developed for a local dental practice.  
-It showcases a robust front-end implementation with a focus on **user experience**, **professional design fidelity**, and **maintainable component architecture**.
+## Getting Started
 
----
+First, run the development server:
 
-## Technology Stack
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-| Category | Technology | Purpose & Professional Application |
-|----------|------------|-----------------------------------|
-| **Frontend Framework** | ReactJS | Built a modular, reusable component library to manage dynamic data flows and create an efficient user experience. |
-| **Styling & Design** | Tailwind CSS | Utility-first workflow for rapid UI development, ensuring responsive design and minimizing CSS bloat. |
-| **Language** | JavaScript (ES6+) | Modern features for clean, asynchronous logic, and state management in functional components. |
-| **Hosting Platform** | Firebase | Fast, reliable static hosting for seamless website availability. |
-| **Tooling** | NPM / Node.js | Dependency management, scripting, and leveraging the JavaScript ecosystem. |
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Design & User Experience (UX) Thought Processes
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 1. Figma Integration and Design Fidelity
-- **Design-First Approach:** Prototyped UI in Figma to review visual identity and user flow with stakeholders.  
-- **Translating Design to Code:** Accurately implemented Figma prototypes in React, achieving pixel-perfect fidelity.
+## Learn More
 
-### 2. Branding and Aesthetics
-- **Professional Trust:** Color palette and typography convey cleanliness and professionalism.  
-- **Responsive Design:** Mobile-first approach using Tailwind CSS utility classes ensures perfect scaling from mobile to desktop.
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Architectural & Engineering Principles
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 1. Component-Based Architecture
-- **Modularity:** UI broken into reusable components (`Employee.js`, `Testimonials.js`, `contactForm.js`) following **Single Responsibility Principle (SRP)**.  
-- **Atomic Design:** Components categorized into atoms (buttons, form fields) and molecules (forms, navigation bars) for consistency.
+## Deploy on Vercel
 
-### 2. Declarative State and Form Handling
-- **React Hooks:** `useState` and `useEffect` manage component state and lifecycle effectively.  
-- **Controlled Forms:** Components like `BookAppointment.js` and `ExistingForm.js` use controlled patterns to manage input state and validation.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### 3. Separation of Concerns (SoC) in the Frontend
-- **Logic vs. Presentation:** Clear separation between JSX/presentation and local business logic/hooks for long-term scalability.
-
----
-
-## Key Learning Outcomes
-- **Front-End Proficiency:** Mastery of React ecosystem, state management, and custom component integration.  
-- **Advanced Styling:** Deep practical experience with Tailwind CSS and PostCSS integration.  
-- **Cross-Functional Development:** Translation of high-fidelity Figma wireframes into a live web application.  
-- **User-Centric Design:** Structuring the site around user goals (finding info, booking appointments) for a professional digital presence.  
-- **Code Quality:** Using ESLint to maintain consistent, bug-resistant code.
-
----
-
-## Author
-**Rushil Shah**  
-[LinkedIn](https://linkedin.com/in/rushilshahh)
-Portfolio
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
