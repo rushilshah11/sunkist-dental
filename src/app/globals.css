@@ -47,6 +47,10 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-marquee: marquee 32s linear infinite;
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-soft: var(--brand-gold-soft);
+  --color-brand-teal-hover: var(--brand-teal-hover);
+  --color-brand-teal-soft: var(--brand-teal-soft);
 }
 
 @keyframes marquee {
@@ -91,6 +95,10 @@
   --sidebar-accent-foreground: #266880;
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: #266880;
+  --brand-gold: #e8a456;
+  --brand-gold-soft: #fdf6ec;
+  --brand-teal-hover: #1e5367;
+  --brand-teal-soft: #ebf4f6;
 }
 
 .dark {
@@ -125,6 +133,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: #3d8aa8;
+  --brand-gold: #e8a456;
+  --brand-gold-soft: oklch(0.35 0.05 70);
+  --brand-teal-hover: #4f9fbd;
+  --brand-teal-soft: oklch(0.3 0.03 205);
 }
 
 @layer base {

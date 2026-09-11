@@ -40,7 +40,7 @@ export function Testimonials() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
         >
           <Badge variant="secondary" className="gap-1">
-            <Star className="size-3 fill-current" />
+            <Star className="size-3 fill-brand-gold text-brand-gold" />
             {googleReviews.rating}
           </Badge>
           {googleReviews.count} Google reviews

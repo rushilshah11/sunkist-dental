@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SunkistLogo } from "@/components/icons/sunkist-logo";
 import { Container } from "@/components/layout/container";
 import { BookAppointmentButton } from "@/components/site/book-appointment-button";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -100,8 +101,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="text-lg font-semibold text-foreground">
-          {siteConfig.name}
+        <Link href="/" aria-label={siteConfig.name}>
+          <SunkistLogo />
         </Link>
 
         <NavigationMenu className="hidden md:flex">

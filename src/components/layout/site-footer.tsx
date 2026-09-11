@@ -93,7 +93,7 @@ export function SiteFooter() {
               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
             >
               <Badge variant="secondary" className="gap-1">
-                <Star className="size-3 fill-current" />
+                <Star className="size-3 fill-brand-gold text-brand-gold" />
                 {googleReviews.rating}
               </Badge>
               {googleReviews.count} Google reviews
