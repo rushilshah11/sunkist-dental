@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
+import { ContactForm } from "@/components/site/contact-form";
 import { siteConfig } from "@/lib/site-config";
 
 const description = `Visit ${siteConfig.name} at ${siteConfig.address.line1}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}, or call ${siteConfig.phone}.`;
@@ -77,6 +78,13 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
           className="h-96 w-full"
         />
+      </div>
+
+      <div className="max-w-xl space-y-4">
+        <h2 className="text-xl font-semibold tracking-tight text-foreground">
+          Send us a message
+        </h2>
+        <ContactForm />
       </div>
     </Container>
   );
