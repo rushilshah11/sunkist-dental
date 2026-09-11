@@ -23,6 +23,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.6,
     },
+    {
+      url: `${siteConfig.siteUrl}/insurance`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteConfig.siteUrl}/new-patient-forms`,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.siteUrl}/faq`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({

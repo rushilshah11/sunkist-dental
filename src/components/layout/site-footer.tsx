@@ -6,7 +6,9 @@ import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { googleReviews } from "@/lib/reviews";
-import { navLinks, siteConfig } from "@/lib/site-config";
+import { flattenNavLinks, navLinks, siteConfig } from "@/lib/site-config";
+
+const footerLinks = flattenNavLinks(navLinks);
 
 export function SiteFooter() {
   return (
@@ -18,7 +20,7 @@ export function SiteFooter() {
           </p>
           <p className="text-sm text-muted-foreground">{siteConfig.doctorName}</p>
           <nav className="flex flex-col gap-1 pt-2">
-            {navLinks.map((link) => (
+            {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

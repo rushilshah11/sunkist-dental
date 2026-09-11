@@ -1,4 +1,4 @@
-import type { Service } from "@/lib/services";
+import type { Faq } from "@/lib/faqs";
 import { siteConfig } from "@/lib/site-config";
 
 const dayToSchema: Record<string, string> = {
@@ -68,11 +68,11 @@ export function getLocalBusinessJsonLd() {
   };
 }
 
-export function getFaqJsonLd(service: Service) {
+export function getFaqJsonLd(faqs: Faq[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: service.faqs.map((faq) => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {

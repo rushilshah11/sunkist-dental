@@ -4,14 +4,22 @@ import { Mail, Menu, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Container } from "@/components/layout/container";
 import { BookAppointmentButton } from "@/components/site/book-appointment-button";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
@@ -23,7 +31,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { navLinks, siteConfig } from "@/lib/site-config";
+import { isNavGroup, navLinks, siteConfig, type NavLink } from "@/lib/site-config";
 
 const quickContacts = [
   { label: "Call us", href: siteConfig.phoneHref, icon: Phone, external: false },
@@ -46,7 +54,7 @@ function useIsActive(href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
-function DesktopNavLink({ href, label }: { href: string; label: string }) {
+function DesktopNavLink({ href, label }: NavLink) {
   const isActive = useIsActive(href);
   return (
     <NavigationMenuItem>
@@ -61,6 +69,33 @@ function DesktopNavLink({ href, label }: { href: string; label: string }) {
   );
 }
 
+function DesktopNavGroup({ label, items }: { label: string; items: NavLink[] }) {
+  const pathname = usePathname();
+  const isActive = items.some((item) => pathname.startsWith(item.href));
+
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger
+        className={navigationMenuTriggerStyle()}
+        data-active={isActive || undefined}
+      >
+        {label}
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-56 gap-1">
+          {items.map((item) => (
+            <li key={item.href}>
+              <NavigationMenuLink render={<Link href={item.href} />}>
+                {item.label}
+              </NavigationMenuLink>
+            </li>
+          ))}
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
@@ -71,9 +106,13 @@ export function SiteHeader() {
 
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
-            {navLinks.map((link) => (
-              <DesktopNavLink key={link.href} href={link.href} label={link.label} />
-            ))}
+            {navLinks.map((entry) =>
+              isNavGroup(entry) ? (
+                <DesktopNavGroup key={entry.label} label={entry.label} items={entry.items} />
+              ) : (
+                <DesktopNavLink key={entry.href} href={entry.href} label={entry.label} />
+              )
+            )}
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -118,19 +157,46 @@ export function SiteHeader() {
             </SheetHeader>
 
             <nav className="flex flex-col gap-4 px-4">
-              {navLinks.map((link) => (
-                <SheetClose
-                  key={link.href}
-                  render={
-                    <Link
-                      href={link.href}
-                      className="text-sm font-medium text-muted-foreground"
-                    />
-                  }
-                >
-                  {link.label}
-                </SheetClose>
-              ))}
+              {navLinks.map((entry) =>
+                isNavGroup(entry) ? (
+                  <Accordion key={entry.label}>
+                    <AccordionItem value={entry.label} className="border-none">
+                      <AccordionTrigger className="p-0 text-sm font-medium text-muted-foreground hover:no-underline">
+                        {entry.label}
+                      </AccordionTrigger>
+                      <AccordionContent className="flex flex-col gap-3 pt-3 pl-3">
+                        {entry.items.map((item) => (
+                          <SheetClose
+                            key={item.href}
+                            nativeButton={false}
+                            render={
+                              <Link
+                                href={item.href}
+                                className="text-sm text-muted-foreground"
+                              />
+                            }
+                          >
+                            {item.label}
+                          </SheetClose>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ) : (
+                  <SheetClose
+                    key={entry.href}
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href={entry.href}
+                        className="text-sm font-medium text-muted-foreground"
+                      />
+                    }
+                  >
+                    {entry.label}
+                  </SheetClose>
+                )
+              )}
             </nav>
 
             <div className="mt-auto flex flex-col gap-4 border-t border-border p-4">

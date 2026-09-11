@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     notFound();
   }
 
-  const faqJsonLd = getFaqJsonLd(service);
+  const faqJsonLd = getFaqJsonLd(service.faqs);
 
   return (
     <Container className="py-16">

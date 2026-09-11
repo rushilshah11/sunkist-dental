@@ -23,6 +23,10 @@ export const siteConfig = {
     facebook: "https://www.facebook.com/sunkistdental/",
     linkedin: "https://www.linkedin.com/in/drgrishmashah/",
   },
+  bookingUrl:
+    "https://patient.rocks/Dashboard/PatientDashboard/ZGFlN2M3NDUtMWJmYi00MDU5LTk0MmMtZDNmMTBh/MA==",
+  newPatientFormsUrl:
+    "https://patient.rocks/PatientForm/patient/ZGFlN2M3NDUtMWJmYi00MDU5LTk0MmMtZDNmMTBh",
   hours: [
     { day: "Monday", time: "10:00 AM – 6:00 PM" },
     { day: "Tuesday", time: "Closed" },
@@ -34,9 +38,29 @@ export const siteConfig = {
   ],
 } as const;
 
-export const navLinks = [
+export type NavLink = { href: string; label: string };
+export type NavGroup = { label: string; items: NavLink[] };
+export type NavEntry = NavLink | NavGroup;
+
+export function isNavGroup(entry: NavEntry): entry is NavGroup {
+  return "items" in entry;
+}
+
+export const navLinks: NavEntry[] = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  {
+    label: "New Patients",
+    items: [
+      { href: "/insurance", label: "Insurance & Payment" },
+      { href: "/new-patient-forms", label: "New Patient Forms" },
+    ],
+  },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-] as const;
+];
+
+export function flattenNavLinks(entries: NavEntry[]): NavLink[] {
+  return entries.flatMap((entry) => (isNavGroup(entry) ? entry.items : [entry]));
+}
