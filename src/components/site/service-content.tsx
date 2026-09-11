@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   Accordion,
   AccordionContent,
@@ -7,6 +5,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { BookAppointmentButton } from "@/components/site/book-appointment-button";
+import { SectionHeading } from "@/components/site/heading";
+import { LinkCard } from "@/components/site/link-card";
 import { services, type Service } from "@/lib/services";
 
 export function ServiceContent({ service }: { service: Service }) {
@@ -21,12 +21,9 @@ export function ServiceContent({ service }: { service: Service }) {
       </p>
 
       <section aria-labelledby="when-needed-heading" className="space-y-4">
-        <h2
-          id="when-needed-heading"
-          className="text-xl font-semibold tracking-tight text-foreground"
-        >
+        <SectionHeading id="when-needed-heading">
           Signs you may need this
-        </h2>
+        </SectionHeading>
         <ul className="grid gap-3 sm:grid-cols-2">
           {service.whenNeeded.map((sign) => (
             <li
@@ -40,12 +37,9 @@ export function ServiceContent({ service }: { service: Service }) {
       </section>
 
       <section aria-labelledby="what-to-expect-heading" className="space-y-4">
-        <h2
-          id="what-to-expect-heading"
-          className="text-xl font-semibold tracking-tight text-foreground"
-        >
+        <SectionHeading id="what-to-expect-heading">
           What to expect
-        </h2>
+        </SectionHeading>
         <ol className="grid gap-4 sm:grid-cols-2">
           {service.whatToExpect.map((step, index) => (
             <li key={step.title} className="flex gap-3">
@@ -64,12 +58,9 @@ export function ServiceContent({ service }: { service: Service }) {
       </section>
 
       <section aria-labelledby="faq-heading" className="space-y-4">
-        <h2
-          id="faq-heading"
-          className="text-xl font-semibold tracking-tight text-foreground"
-        >
+        <SectionHeading id="faq-heading">
           Frequently asked questions
-        </h2>
+        </SectionHeading>
         <Accordion className="max-w-2xl">
           {service.faqs.map((faq) => (
             <AccordionItem key={faq.question} value={faq.question}>
@@ -86,24 +77,17 @@ export function ServiceContent({ service }: { service: Service }) {
 
       {relatedServices && relatedServices.length > 0 && (
         <section aria-labelledby="related-heading" className="space-y-4">
-          <h2
-            id="related-heading"
-            className="text-xl font-semibold tracking-tight text-foreground"
-          >
+          <SectionHeading id="related-heading">
             Related procedures
-          </h2>
+          </SectionHeading>
           <ul className="grid gap-3 sm:grid-cols-2">
             {relatedServices.map((related) => (
               <li key={related.slug}>
-                <Link
+                <LinkCard
                   href={`/services/${related.slug}`}
-                  className="block rounded-lg border border-border p-4 transition-colors hover:border-primary hover:bg-muted/40"
-                >
-                  <p className="font-medium text-foreground">{related.title}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {related.summary}
-                  </p>
-                </Link>
+                  title={related.title}
+                  description={related.summary}
+                />
               </li>
             ))}
           </ul>

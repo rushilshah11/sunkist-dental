@@ -3,21 +3,18 @@ import { CreditCard, HandCoins, Wallet } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { ContactForm } from "@/components/site/contact-form";
+import { FeatureCard } from "@/components/site/feature-card";
+import { PageHeading, SectionHeading } from "@/components/site/heading";
 import { LogoMarquee } from "@/components/site/logo-marquee";
 import { insuranceProviders } from "@/lib/insurance";
+import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
-const description = `Insurance and payment options at ${siteConfig.name} in ${siteConfig.address.city}, ${siteConfig.address.state}.`;
-
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Insurance & Payment",
-  description,
-  openGraph: {
-    title: `Insurance & Payment | ${siteConfig.name}`,
-    description,
-    url: "/insurance",
-  },
-};
+  description: `Insurance and payment options at ${siteConfig.name} in ${siteConfig.address.city}, ${siteConfig.address.state}.`,
+  path: "/insurance",
+});
 
 const paymentOptions = [
   {
@@ -43,9 +40,7 @@ export default function InsurancePage() {
   return (
     <Container className="py-16">
       <div className="max-w-2xl space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-          Insurance & Payment
-        </h1>
+        <PageHeading>Insurance & Payment</PageHeading>
         <p className="text-muted-foreground">
           Getting the care you need shouldn&apos;t be complicated. Here&apos;s
           how insurance and payment work at {siteConfig.name}, whether
@@ -55,12 +50,9 @@ export default function InsurancePage() {
 
       <section aria-labelledby="insurance-heading" className="mt-16 space-y-6">
         <div>
-          <h2
-            id="insurance-heading"
-            className="text-xl font-semibold tracking-tight text-foreground"
-          >
+          <SectionHeading id="insurance-heading">
             Insurance we accept
-          </h2>
+          </SectionHeading>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             We&apos;re in-network with many major dental PPO plans, including:
           </p>
@@ -75,30 +67,20 @@ export default function InsurancePage() {
       </section>
 
       <section aria-labelledby="payment-heading" className="mt-16 space-y-6">
-        <h2
-          id="payment-heading"
-          className="text-xl font-semibold tracking-tight text-foreground"
-        >
+        <SectionHeading id="payment-heading">
           Paying without insurance
-        </h2>
+        </SectionHeading>
         <ul className="grid gap-4 sm:grid-cols-3">
-          {paymentOptions.map(({ icon: Icon, title, description }) => (
-            <li key={title} className="space-y-2 rounded-lg border border-border p-4">
-              <Icon className="size-5 text-primary" />
-              <p className="font-medium text-foreground">{title}</p>
-              <p className="text-sm text-muted-foreground">{description}</p>
-            </li>
+          {paymentOptions.map((option) => (
+            <FeatureCard key={option.title} {...option} />
           ))}
         </ul>
       </section>
 
       <section aria-labelledby="contact-heading" className="mt-16 max-w-xl space-y-6">
-        <h2
-          id="contact-heading"
-          className="text-xl font-semibold tracking-tight text-foreground"
-        >
+        <SectionHeading id="contact-heading">
           Still have questions?
-        </h2>
+        </SectionHeading>
         <p className="text-sm text-muted-foreground">
           Send us a message and we&apos;ll help you figure out your options
           before you come in.

@@ -2,29 +2,25 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
+import { PageHeading } from "@/components/site/heading";
+import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
-const description = `Meet ${siteConfig.doctorName} — a family dentist in Orange, CA known for patient, honest, detail-oriented care.`;
-
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
-  description,
-  openGraph: {
-    title: `About | ${siteConfig.name}`,
-    description,
-    url: "/about",
-    images: [{ url: "/images/doctor.jpeg", width: 500, height: 667 }],
-  },
-};
+  description: `Meet ${siteConfig.doctorName} — a family dentist in Orange, CA known for patient, honest, detail-oriented care.`,
+  path: "/about",
+  image: { url: "/images/doctor.jpeg", width: 500, height: 667 },
+});
 
 export default function AboutPage() {
   return (
     <Container className="py-16">
       <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div className="space-y-6">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <PageHeading className="sm:text-4xl">
             Meet {siteConfig.doctorName}
-          </h1>
+          </PageHeading>
           <p className="text-muted-foreground">
             Dr. Shah is passionate about giving every patient the best
             possible care. Her eye for detail, dedication to quality, and

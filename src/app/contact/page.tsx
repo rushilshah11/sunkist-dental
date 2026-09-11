@@ -3,26 +3,20 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { ContactForm } from "@/components/site/contact-form";
+import { PageHeading, SectionHeading } from "@/components/site/heading";
+import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
-const description = `Visit ${siteConfig.name} at ${siteConfig.address.line1}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}, or call ${siteConfig.phone}.`;
-
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description,
-  openGraph: {
-    title: `Contact | ${siteConfig.name}`,
-    description,
-    url: "/contact",
-  },
-};
+  description: `Visit ${siteConfig.name} at ${siteConfig.address.line1}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}, or call ${siteConfig.phone}.`,
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <Container className="space-y-8 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-        Contact Us
-      </h1>
+      <PageHeading>Contact Us</PageHeading>
 
       <div className="grid gap-8 sm:grid-cols-2">
         <div className="space-y-3 text-muted-foreground">
@@ -81,9 +75,7 @@ export default function ContactPage() {
       </div>
 
       <div className="max-w-xl space-y-4">
-        <h2 className="text-xl font-semibold tracking-tight text-foreground">
-          Send us a message
-        </h2>
+        <SectionHeading>Send us a message</SectionHeading>
         <ContactForm />
       </div>
     </Container>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AppShell } from "@/components/layout/app-shell";
+import { JsonLdScript } from "@/components/site/json-ld-script";
 import { getLocalBusinessJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site-config";
 
@@ -51,10 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-        />
+        <JsonLdScript data={localBusinessJsonLd} />
         <AppShell>{children}</AppShell>
       </body>
     </html>

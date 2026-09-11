@@ -1,11 +1,8 @@
+import type { Faq } from "@/lib/faqs";
+
 export type ServiceStep = {
   title: string;
   description: string;
-};
-
-export type ServiceFaq = {
-  question: string;
-  answer: string;
 };
 
 export const serviceCategories = [
@@ -26,7 +23,7 @@ export type Service = {
   overview: string;
   whenNeeded: string[];
   whatToExpect: ServiceStep[];
-  faqs: ServiceFaq[];
+  faqs: Faq[];
   relatedSlugs?: string[];
 };
 

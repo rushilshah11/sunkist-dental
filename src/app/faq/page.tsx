@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
+import { PageHeading } from "@/components/site/heading";
+import { JsonLdScript } from "@/components/site/json-ld-script";
 import {
   Accordion,
   AccordionContent,
@@ -9,32 +11,22 @@ import {
 } from "@/components/ui/accordion";
 import { generalFaqs } from "@/lib/faqs";
 import { getFaqJsonLd } from "@/lib/json-ld";
+import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
-const description = `Answers to common questions about visiting ${siteConfig.name} in ${siteConfig.address.city}, ${siteConfig.address.state}.`;
-
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "FAQ",
-  description,
-  openGraph: {
-    title: `FAQ | ${siteConfig.name}`,
-    description,
-    url: "/faq",
-  },
-};
+  description: `Answers to common questions about visiting ${siteConfig.name} in ${siteConfig.address.city}, ${siteConfig.address.state}.`,
+  path: "/faq",
+});
 
 export default function FaqPage() {
   const faqJsonLd = getFaqJsonLd(generalFaqs);
 
   return (
     <Container className="py-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-        Frequently Asked Questions
-      </h1>
+      <JsonLdScript data={faqJsonLd} />
+      <PageHeading>Frequently Asked Questions</PageHeading>
       <p className="mt-2 max-w-2xl text-muted-foreground">
         Answers to the questions we hear most from new and existing patients.
       </p>
