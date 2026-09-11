@@ -4,8 +4,17 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/lib/site-config";
 
+const description = `Meet ${siteConfig.doctorName} — a family dentist in Orange, CA known for patient, honest, detail-oriented care.`;
+
 export const metadata: Metadata = {
   title: "About",
+  description,
+  openGraph: {
+    title: `About | ${siteConfig.name}`,
+    description,
+    url: "/about",
+    images: [{ url: "/images/doctor.jpeg", width: 500, height: 667 }],
+  },
 };
 
 export default function AboutPage() {

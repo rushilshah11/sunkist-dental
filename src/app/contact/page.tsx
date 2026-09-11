@@ -4,8 +4,16 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/lib/site-config";
 
+const description = `Visit ${siteConfig.name} at ${siteConfig.address.line1}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}, or call ${siteConfig.phone}.`;
+
 export const metadata: Metadata = {
   title: "Contact",
+  description,
+  openGraph: {
+    title: `Contact | ${siteConfig.name}`,
+    description,
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

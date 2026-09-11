@@ -3,9 +3,18 @@ import Link from "next/link";
 
 import { Container } from "@/components/layout/container";
 import { services } from "@/lib/services";
+import { siteConfig } from "@/lib/site-config";
+
+const description = `Restorative, preventive, and family dental services at ${siteConfig.name} in ${siteConfig.address.city}, ${siteConfig.address.state}.`;
 
 export const metadata: Metadata = {
   title: "Services",
+  description,
+  openGraph: {
+    title: `Services | ${siteConfig.name}`,
+    description,
+    url: "/services",
+  },
 };
 
 export default function ServicesPage() {
@@ -15,8 +24,8 @@ export default function ServicesPage() {
         Services
       </h1>
       <p className="mt-2 max-w-2xl text-muted-foreground">
-        An overview of the procedures we offer. Full descriptions are on their
-        way.
+        An overview of the procedures we offer. Select any service to see
+        what to expect.
       </p>
 
       <ul className="mt-8 grid gap-4 sm:grid-cols-2">
