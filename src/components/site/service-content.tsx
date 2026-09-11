@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   Accordion,
   AccordionContent,
@@ -5,9 +7,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { BookAppointmentButton } from "@/components/site/book-appointment-button";
-import type { Service } from "@/lib/services";
+import { services, type Service } from "@/lib/services";
 
 export function ServiceContent({ service }: { service: Service }) {
+  const relatedServices = service.relatedSlugs
+    ?.map((slug) => services.find((entry) => entry.slug === slug))
+    .filter((entry): entry is Service => entry !== undefined);
+
   return (
     <div className="space-y-16">
       <p className="max-w-2xl text-lg text-muted-foreground">
@@ -77,6 +83,32 @@ export function ServiceContent({ service }: { service: Service }) {
           ))}
         </Accordion>
       </section>
+
+      {relatedServices && relatedServices.length > 0 && (
+        <section aria-labelledby="related-heading" className="space-y-4">
+          <h2
+            id="related-heading"
+            className="text-xl font-semibold tracking-tight text-foreground"
+          >
+            Related procedures
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {relatedServices.map((related) => (
+              <li key={related.slug}>
+                <Link
+                  href={`/services/${related.slug}`}
+                  className="block rounded-lg border border-border p-4 transition-colors hover:border-primary hover:bg-muted/40"
+                >
+                  <p className="font-medium text-foreground">{related.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {related.summary}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <BookAppointmentButton size="lg" />
     </div>

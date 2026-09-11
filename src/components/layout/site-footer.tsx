@@ -98,10 +98,34 @@ export function SiteFooter() {
             </Link>
 
             <div className="flex items-center gap-1">
-              <Button variant="ghost" size="icon" disabled aria-label="Facebook">
+              <Button
+                variant="ghost"
+                size="icon"
+                nativeButton={false}
+                render={
+                  <a
+                    href={siteConfig.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  />
+                }
+              >
                 <FacebookIcon className="size-4" />
               </Button>
-              <Button variant="ghost" size="icon" disabled aria-label="LinkedIn">
+              <Button
+                variant="ghost"
+                size="icon"
+                nativeButton={false}
+                render={
+                  <a
+                    href={siteConfig.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  />
+                }
+              >
                 <LinkedinIcon className="size-4" />
               </Button>
             </div>
