@@ -23,6 +23,7 @@ export function pageMetadata({
   return {
     title,
     description,
+    alternates: { canonical: path },
     openGraph: {
       url: path,
       ...(image && { images: [image] }),

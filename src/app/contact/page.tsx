@@ -3,6 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { PageHeading } from "@/components/site/heading";
+import { ServiceArea } from "@/components/site/service-area";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
@@ -62,6 +63,8 @@ export default function ContactPage() {
           </ul>
         </div>
       </div>
+
+      <ServiceArea />
 
       <div className="overflow-hidden rounded-lg border border-border">
         <iframe

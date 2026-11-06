@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AppShell } from "@/components/layout/app-shell";
+import { Analytics } from "@/components/site/analytics";
 import { JsonLdScript } from "@/components/site/json-ld-script";
 import { getLocalBusinessJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site-config";
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const description = `${siteConfig.doctorName} and the Sunkist Dental team provide friendly, family dentistry in Orange, CA.`;
+const description = `${siteConfig.doctorName} and the ${siteConfig.shortName} team provide friendly, family dentistry in Orange, CA.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -34,6 +35,13 @@ export const metadata: Metadata = {
     description,
     url: "/",
     images: [{ url: "/images/hero-office.jpg", width: 1600, height: 1068 }],
+  },
+  alternates: { canonical: "/" },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : undefined,
   },
   twitter: {
     card: "summary_large_image",
@@ -54,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <JsonLdScript data={localBusinessJsonLd} />
         <AppShell>{children}</AppShell>
+        <Analytics />
       </body>
     </html>
   );

@@ -43,7 +43,7 @@ export default function InsurancePage() {
         <PageHeading>Insurance & Payment</PageHeading>
         <p className="text-muted-foreground">
           Getting the care you need shouldn&apos;t be complicated. Here&apos;s
-          how insurance and payment work at {siteConfig.name}, whether
+          how insurance and payment work at {siteConfig.shortName}, whether
           you&apos;re covered or paying out of pocket.
         </p>
       </div>

@@ -1,5 +1,5 @@
 import type { Faq } from "@/lib/faqs";
-import { siteConfig } from "@/lib/site-config";
+import { doctor, siteConfig } from "@/lib/site-config";
 
 const dayToSchema: Record<string, string> = {
   Monday: "Monday",
@@ -46,11 +46,31 @@ export function getLocalBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Dentist",
+    "@id": `${siteConfig.siteUrl}/#dentist`,
     name: siteConfig.name,
+    alternateName: siteConfig.shortName,
+    description:
+      "Friendly, family dentistry in Orange, CA with Dr. Grishma Shah — restorative care, root canals, implants, dentures, periodontal care and routine cleanings.",
     image: `${siteConfig.siteUrl}/images/hero-office.jpg`,
     url: siteConfig.siteUrl,
-    telephone: siteConfig.phone,
+    telephone: siteConfig.phoneE164,
     email: siteConfig.email,
+    hasMap: siteConfig.mapsUrl,
+    isAcceptingNewPatients: true,
+    paymentAccepted: "Cash, Credit Card",
+    areaServed: siteConfig.serviceAreas.map((city) => ({
+      "@type": "City",
+      name: city,
+      containedInPlace: { "@type": "State", name: "California" },
+    })),
+    sameAs: [...siteConfig.sameAs],
+    employee: {
+      "@type": "Person",
+      name: siteConfig.doctorName,
+      honorificPrefix: "Dr.",
+      honorificSuffix: "DDS",
+      jobTitle: "Dentist",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.line1,
@@ -80,5 +100,44 @@ export function getFaqJsonLd(faqs: Faq[]) {
         text: faq.answer,
       },
     })),
+  };
+}
+
+export function getBreadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteConfig.siteUrl}${item.path === "/" ? "" : item.path}`,
+    })),
+  };
+}
+
+export function getDoctorJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteConfig.siteUrl}/about#doctor`,
+    name: siteConfig.doctorName,
+    honorificPrefix: "Dr.",
+    honorificSuffix: "DDS",
+    jobTitle: "Dentist",
+    image: `${siteConfig.siteUrl}/images/doctor.jpeg`,
+    url: `${siteConfig.siteUrl}/about`,
+    worksFor: { "@id": `${siteConfig.siteUrl}/#dentist` },
+    alumniOf: doctor.education.map((entry) => ({
+      "@type": "CollegeOrUniversity",
+      name: entry.school,
+    })),
+    ...(doctor.memberships.length > 0 && {
+      memberOf: doctor.memberships.map((name) => ({
+        "@type": "Organization",
+        name,
+      })),
+    }),
+    ...(doctor.languages.length > 0 && { knowsLanguage: doctor.languages }),
   };
 }

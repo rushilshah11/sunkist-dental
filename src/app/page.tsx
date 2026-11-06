@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
-import { BookAppointmentButton } from "@/components/site/book-appointment-button";
 import { Testimonials } from "@/components/site/testimonials";
+import { BookAppointmentButton } from "@/components/site/book-appointment-button";
+import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Family Dentist in Orange, CA",
+  description: `${siteConfig.doctorName} and the ${siteConfig.shortName} team provide friendly, family dentistry in Orange, CA — restorative care, root canals, implants, dentures and cleanings. New patients welcome. Call ${siteConfig.phone}.`,
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -24,7 +32,7 @@ export default function Home() {
           <div className="overflow-hidden rounded-lg border border-border">
             <Image
               src="/images/hero-office.jpg"
-              alt="Sunkist Dental office"
+              alt="Sunkist Dental office in Orange, CA"
               width={1600}
               height={1068}
               className="h-full w-full object-cover"

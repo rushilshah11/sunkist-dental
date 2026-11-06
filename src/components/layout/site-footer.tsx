@@ -18,7 +18,6 @@ export function SiteFooter() {
           <p className="text-sm font-semibold tracking-wide text-foreground uppercase">
             {siteConfig.name}
           </p>
-          <p className="text-sm text-muted-foreground">{siteConfig.doctorName}</p>
           <nav className="flex flex-col gap-1 pt-2">
             {footerLinks.map((link) => (
               <Link

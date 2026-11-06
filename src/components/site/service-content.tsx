@@ -4,9 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BookAppointmentButton } from "@/components/site/book-appointment-button";
 import { SectionHeading } from "@/components/site/heading";
 import { LinkCard } from "@/components/site/link-card";
+import { VisitCard } from "@/components/site/visit-card";
 import { services, type Service } from "@/lib/services";
 
 export function ServiceContent({ service }: { service: Service }) {
@@ -94,7 +94,7 @@ export function ServiceContent({ service }: { service: Service }) {
         </section>
       )}
 
-      <BookAppointmentButton size="lg" />
+      <VisitCard />
     </div>
   );
 }
