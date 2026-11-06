@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/accordion";
 import { SunkistLogo } from "@/components/icons/sunkist-logo";
 import { Container } from "@/components/layout/container";
-import { BookAppointmentButton } from "@/components/site/book-appointment-button";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -32,6 +31,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { isNavGroup, navLinks, siteConfig, type NavLink } from "@/lib/site-config";
 
 const quickContacts = [
@@ -50,6 +50,16 @@ const quickContacts = [
   },
 ] as const;
 
+// Top-level nav items: plain text, no box/background/rounded corners.
+// Resting text is slightly lighter; hover/active/open darkens it.
+const navItemClass = [
+  "rounded-none px-3.5 text-foreground/70 transition-colors",
+  "hover:bg-transparent focus:bg-transparent hover:text-foreground focus:text-foreground",
+  "data-active:bg-transparent data-active:hover:bg-transparent data-active:focus:bg-transparent data-active:text-foreground",
+  "data-popup-open:bg-transparent data-popup-open:hover:bg-transparent data-popup-open:text-foreground",
+  "data-open:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent data-open:text-foreground",
+].join(" ");
+
 function useIsActive(href: string) {
   const pathname = usePathname();
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -62,7 +72,7 @@ function DesktopNavLink({ href, label }: NavLink) {
       <NavigationMenuLink
         render={<Link href={href} />}
         active={isActive}
-        className={navigationMenuTriggerStyle()}
+        className={cn(navigationMenuTriggerStyle(), navItemClass)}
       >
         {label}
       </NavigationMenuLink>
@@ -77,7 +87,7 @@ function DesktopNavGroup({ label, items }: { label: string; items: NavLink[] }) 
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger
-        className={navigationMenuTriggerStyle()}
+        className={cn(navigationMenuTriggerStyle(), navItemClass)}
         data-active={isActive || undefined}
       >
         {label}
@@ -106,7 +116,7 @@ export function SiteHeader() {
         </Link>
 
         <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
+          <NavigationMenuList className="gap-3">
             {navLinks.map((entry) =>
               isNavGroup(entry) ? (
                 <DesktopNavGroup key={entry.label} label={entry.label} items={entry.items} />
@@ -136,7 +146,6 @@ export function SiteHeader() {
               <TooltipContent>{label}</TooltipContent>
             </Tooltip>
           ))}
-          <BookAppointmentButton className="ml-2" />
         </div>
 
         <Sheet>
@@ -213,7 +222,6 @@ export function SiteHeader() {
                   {label}
                 </a>
               ))}
-              <BookAppointmentButton className="w-full" />
             </div>
           </SheetContent>
         </Sheet>

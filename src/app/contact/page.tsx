@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
-import { ContactForm } from "@/components/site/contact-form";
-import { PageHeading, SectionHeading } from "@/components/site/heading";
+import { PageHeading } from "@/components/site/heading";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
@@ -72,11 +71,6 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
           className="h-96 w-full"
         />
-      </div>
-
-      <div className="max-w-xl space-y-4">
-        <SectionHeading>Send us a message</SectionHeading>
-        <ContactForm />
       </div>
     </Container>
   );

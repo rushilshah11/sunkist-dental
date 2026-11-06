@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { CreditCard, HandCoins, Wallet } from "lucide-react";
+import { CreditCard, HandCoins, Phone, Wallet } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
-import { ContactForm } from "@/components/site/contact-form";
 import { FeatureCard } from "@/components/site/feature-card";
 import { PageHeading, SectionHeading } from "@/components/site/heading";
+import { Button } from "@/components/ui/button";
 import { LogoMarquee } from "@/components/site/logo-marquee";
 import { insuranceProviders } from "@/lib/insurance";
 import { pageMetadata } from "@/lib/metadata";
@@ -82,11 +82,18 @@ export default function InsurancePage() {
           Still have questions?
         </SectionHeading>
         <p className="text-sm text-muted-foreground">
-          Send us a message and we&apos;ll help you figure out your options
+          Give us a call and we&apos;ll help you figure out your options
           before you come in.
         </p>
 
-        <ContactForm />
+        <Button
+          size="lg"
+          nativeButton={false}
+          render={<a href={siteConfig.phoneHref} />}
+        >
+          <Phone />
+          Call {siteConfig.phone}
+        </Button>
       </section>
     </Container>
   );
