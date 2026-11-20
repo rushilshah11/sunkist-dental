@@ -137,6 +137,11 @@ export function getDoctorJsonLd() {
         "@type": "EducationalOccupationalCredential",
         credentialCategory: "license",
         name: "California Dental License",
+        ...(doctor.licenseNumber && { identifier: doctor.licenseNumber }),
+        recognizedBy: {
+          "@type": "GovernmentOrganization",
+          name: "Dental Board of California",
+        },
       },
     }),
     ...(doctor.memberships.length > 0 && {
