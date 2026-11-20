@@ -58,13 +58,29 @@ export default function AboutPage() {
                   </p>
                 </li>
               ))}
-              {doctor.licenseNumber && (
+              {(doctor.licenseNumber || doctor.licensedSince) && (
                 <li>
                   <p className="font-medium text-foreground">
                     Licensed dentist in California
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    License #{doctor.licenseNumber}
+                    {[
+                      doctor.licensedSince && `Since ${doctor.licensedSince}`,
+                      doctor.licenseNumber && `License #${doctor.licenseNumber}`,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                </li>
+              )}
+              {doctor.practiceSince && (
+                <li>
+                  <p className="font-medium text-foreground">
+                    {siteConfig.shortName}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Practicing in {siteConfig.address.city}, CA since{" "}
+                    {doctor.practiceSince}
                   </p>
                 </li>
               )}

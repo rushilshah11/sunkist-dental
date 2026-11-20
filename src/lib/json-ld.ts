@@ -132,6 +132,13 @@ export function getDoctorJsonLd() {
       "@type": "CollegeOrUniversity",
       name: entry.school,
     })),
+    ...(doctor.licensedSince && {
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "license",
+        name: "California Dental License",
+      },
+    }),
     ...(doctor.memberships.length > 0 && {
       memberOf: doctor.memberships.map((name) => ({
         "@type": "Organization",

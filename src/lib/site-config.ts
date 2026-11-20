@@ -86,6 +86,8 @@ export const doctor: {
   yearsInPractice: number;
   education: { school: string; shortSchool: string; detail?: string; years: string }[];
   licenseNumber: string;
+  licensedSince?: number;
+  practiceSince?: number;
   memberships: string[];
   languages: string[];
 } = {
@@ -99,6 +101,8 @@ export const doctor: {
     },
   ],
   licenseNumber: "",
+  licensedSince: 1999,
+  practiceSince: 2004,
   memberships: [],
   languages: [],
 };
