@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 // Renders nothing until NEXT_PUBLIC_GA_ID is set (e.g. "G-XXXXXXXXXX") in
-// Netlify's environment variables, so the dev site stays untracked.
+// the GitHub repository variables, so the dev site stays untracked.
 export function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   if (!gaId) return null;
