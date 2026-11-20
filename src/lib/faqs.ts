@@ -27,7 +27,7 @@ export const generalFaqs: Faq[] = [
   {
     question: "Do you accept my dental insurance?",
     answer:
-      "We work with many major PPO dental plans. Since coverage varies by plan, the best way to confirm your specific benefits is to give us a call — see our Insurance & Payment page for more detail.",
+      "Yes — we accept many PPO and HMO dental plans, including Aetna, Ameritas, Blue Cross, Blue Shield, Cigna, Delta Dental, Delta Care, Guardian, Humana, Liberty Dental, MetLife, Operating Engineers, Premier Access, Principal, United Concordia, and UnitedHealthcare. Coverage varies by plan, so call us and we'll confirm your specific benefits before your visit. More detail is on our Insurance & Payment page.",
   },
   {
     question: "What if I don't have dental insurance?",

@@ -5,8 +5,8 @@ import { Container } from "@/components/layout/container";
 import { FeatureCard } from "@/components/site/feature-card";
 import { PageHeading, SectionHeading } from "@/components/site/heading";
 import { Button } from "@/components/ui/button";
-import { LogoMarquee } from "@/components/site/logo-marquee";
-import { insuranceProviders } from "@/lib/insurance";
+import { InsurancePlanList } from "@/components/site/insurance-plan-list";
+import { insurancePlans } from "@/lib/insurance";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
@@ -54,11 +54,11 @@ export default function InsurancePage() {
             Insurance we accept
           </SectionHeading>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            We&apos;re in-network with many major dental PPO plans, including:
+            We accept many PPO and HMO dental plans, including:
           </p>
         </div>
 
-        <LogoMarquee providers={insuranceProviders} />
+        <InsurancePlanList plans={insurancePlans} />
 
         <p className="text-sm text-muted-foreground">
           Don&apos;t see your plan listed? Coverage varies, so give us a call
