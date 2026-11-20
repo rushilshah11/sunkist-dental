@@ -100,7 +100,7 @@ export const doctor: {
       years: "1997 – 1999",
     },
   ],
-  licenseNumber: "",
+  licenseNumber: "46958",
   licensedSince: 1999,
   practiceSince: 2004,
   memberships: [],
