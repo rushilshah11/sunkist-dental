@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sunkist Dental
 
-## Getting Started
+Website for Sunkist Dental (Dr. Grishma Shah, DDS) in Orange, CA — https://sunkistdental.com
 
-First, run the development server:
+Built to be fast, easy to keep updated, and strong for local search (SEO), answer engines (AEO) and AI search (GEO).
+
+## Stack
+
+- Next.js (App Router) + TypeScript, static export (`output: "export"`)
+- Tailwind CSS + shadcn/ui
+- JSON-LD structured data (Dentist, Person, FAQPage, BreadcrumbList)
+- `sitemap.ts` / `robots.ts` generated at build time
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npx tsc --noEmit
+npm run build    # static site in ./out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where content lives
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | File |
+| --- | --- |
+| Practice info, hours, doctor bio/credentials | `src/lib/site-config.ts` |
+| Insurance plans accepted | `src/lib/insurance.ts` |
+| FAQs (also feed FAQ schema) | `src/lib/faqs.ts` |
+| Structured data | `src/lib/json-ld.ts` |
+| Pages | `src/app/*` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Hosting and deployment
 
-## Learn More
+- **Hosting:** GitHub Pages. Every push to `main` runs `.github/workflows/deploy.yml`, which builds and publishes `out/`.
+- **Custom domain:** `public/CNAME` contains `sunkistdental.com`.
+- **Domain + DNS:** Cloudflare (registrar and DNS). The four GitHub Pages `A` records and the `www` CNAME are proxied; SSL/TLS mode is Full; Always Use HTTPS is on.
+- **Email:** Cloudflare Email Routing forwards `info@sunkistdental.com` to a personal inbox. MX/SPF/DKIM records are managed by Cloudflare.
+- **Search Console:** Domain property `sunkistdental.com`, verified by a `google-site-verification` TXT record on the root. Sitemap: `https://sunkistdental.com/sitemap.xml`.
 
-To learn more about Next.js, take a look at the following resources:
+Do not delete the MX, SPF, DKIM or `google-site-verification` TXT records in Cloudflare.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Optional environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set as GitHub repository variables (Settings → Secrets and variables → Actions → Variables):
 
-## Deploy on Vercel
+- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 measurement ID
+- `NEXT_PUBLIC_GSC_VERIFICATION` — Search Console meta-tag verification (not needed; DNS verified)
+- `NEXT_PUBLIC_BING_VERIFICATION` — Bing Webmaster verification
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Pending / to confirm
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Payment & financing page: only CareCredit is confirmed; other payment copy is unconfirmed.
+- Doctor license number, memberships, languages (optional).
+- Team and office photos.
+- Google Business Profile, directory listings (consistent name/address/phone) and patient reviews.
+
+## Moving to Google Workspace later
+
+Replace the Cloudflare MX records with Google's, update SPF, add Google's DKIM, and re-point or remove the `info@` routing rule. Add the Workspace account as an owner under Search Console → Settings → Users and permissions (keep the TXT record in place).
