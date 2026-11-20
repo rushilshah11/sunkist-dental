@@ -32,17 +32,22 @@ export default function AboutPage() {
             {doctor.yearsInPractice} years of experience.
           </p>
           <p className="text-muted-foreground">
-            Dr. Shah is passionate about giving every patient the best possible
-            care. Her eye for detail, dedication to quality, and warm,
-            easygoing manner set her apart. She believes patients deserve to
-            be fully informed about every step of a procedure beforehand.
+            Dr. Shah has been practicing dentistry for{" "}
+            {doctor.yearsInPractice} years, starting in Gujarat, India, in 1990
+            before building her practice in California, where she has been
+            licensed since {doctor.licensedSince}. She has run{" "}
+            {siteConfig.shortName} in {siteConfig.address.city} since{" "}
+            {doctor.practiceSince}, treating everything from routine cleanings
+            and fillings to root canals, crowns, bridges, dentures, and
+            cosmetic work like veneers and bonding.
           </p>
           <p className="text-muted-foreground">
-            She makes a point of getting to know her patients, and it shows:
-            for years she&apos;s treated generations of the same families, who
-            hold her in the highest regard. Outside the office, she spends time
-            with her two kids, plays the piano, and never misses an episode of
-            Shark Tank.
+            She believes patients deserve to understand every step of a
+            procedure before it happens, and she takes the time to explain it.
+            Her eye for detail and easygoing manner are a big part of why
+            families stay: she&apos;s now treating generations of the same
+            ones. Outside the office, she spends time with her two kids, plays
+            the piano, and never misses an episode of Shark Tank.
           </p>
 
           <section aria-labelledby="credentials-heading" className="space-y-4 pt-4">
